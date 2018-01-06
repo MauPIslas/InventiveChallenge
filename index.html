@@ -10,16 +10,24 @@
 <body>
   <div class="grid">
     <header class="grid-item heder">HEDER</header>
-    <nav class="grid-item nav">nav</nav>
-    <main class="grid-item main" >
+    <nav class="grid-item nav">
+      <div class="flex menssageButton">
+        <p class="fillMenssage">This button works only one time to fill the server, be careful</p>
+        <button type="button" name="button"id="genereteData">Generate data</button>
+        <p class="fillMenssage">When click it, please click load data button to render the page</p>
+        <p class="fillMenssage">This menssage an button will be hidden</p>
+      </div>
+    </nav>
+    <main class="grid-item main" id="cont" >
       <div class="headmain">
-        <button type="button" name="button" id ="addDev">add</button>
+        <button type="button" name="button" id ="addDev">Load data</button>
       </div>
       <div id="main"></div>
     </main>
     <footer class="grid-item footer">footer</footer>
   </div>
   <script src="./js/main.js"></script>
+  <script src="js/generate.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 

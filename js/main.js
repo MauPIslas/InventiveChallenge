@@ -1,3 +1,5 @@
+'use strict'
+
 document.addEventListener('DOMContentLoaded', makeJs);
 
 function makeJs(){
@@ -29,7 +31,7 @@ function makeJs(){
       element.className += "card";
       element.setAttribute('id', idDev);
       divElement.className += "flex";
-      divElement.innerHTML = '<p class="name"><b>'+name+'</b></p> <p class="company">Company: '+company+'</p> <p class="experience"> experience: '+experience+' years</p><p class=""></p> <button type="button" name="button" class="delete" id="d'+idDev+'" >DELETE</button>';
+      divElement.innerHTML = '<p class="name"><b>'+name+'</b></p> <p class="company">Company: '+company+'</p> <p class="experience"> Experience: '+experience+' years</p><p class=""></p> <button type="button" name="button" class="delete" id="d'+idDev+'" >DELETE</button>';
       element.appendChild(divElement);
       var ID= 'd'+idDev;
 
@@ -48,8 +50,8 @@ function makeJs(){
   function makePost(){
 
     var datapost={
-      "name": "Angelo",
-      "company": "Mariachi",
+      "name": "Carla",
+      "company": "Uber",
       "experience": 4};
     $.post("http://localhost:8000/api/developers", datapost, function(datapost,status){},'json');
     render();
@@ -74,7 +76,7 @@ function makeJs(){
     console.log(refId);
     var nameRef= prompt('¿Estas seguro de querer borrar a este developer?, si es así introduce el nombre del usuario');
     console.log(globalData);
-    for (item in globalData){
+    for (var item in globalData){
       console.log(globalData[item].name);
       if(nameRef === globalData[item].name){
           refId= globalData[item].id
