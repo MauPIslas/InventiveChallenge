@@ -48,7 +48,7 @@ function makeJs(){
   function makePost(){
 
     var datapost={
-      "name": "Ken",
+      "name": "Angelo",
       "company": "Mariachi",
       "experience": 4};
     $.post("http://localhost:8000/api/developers", datapost, function(datapost,status){},'json');
