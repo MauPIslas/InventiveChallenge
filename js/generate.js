@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', genereteData)
 
 function genereteData(){
   var mainCont =document.getElementById('main');
-  console.log(mainCont);
+  // console.log(mainCont);
 
 
       var button =document.getElementById('genereteData');
@@ -37,7 +37,12 @@ function genereteData(){
                   "name": "Aaron",
                   "company": "Finerio",
                   "experience": 4
-                  }];
+                                    },
+                  {
+                  "name": "Carla",
+                  "company": "Uber",
+                  "experience": 1
+                                    }];
 
         for(var developer in data){
           console.log(data[developer]);

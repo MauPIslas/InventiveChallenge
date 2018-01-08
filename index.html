@@ -17,10 +17,36 @@
         <p class="fillMenssage">When click it, please click load data button to render the page</p>
         <p class="fillMenssage">This menssage an button will be hidden</p>
       </div>
+      <div class="addDeveloper">
+        <h4>Add a new Developer:</h4>
+        <form action=""name="formulname" method="post">
+          <p class="campo">
+            <label for="nombre">Name: </label>
+            <span>
+              <input type="text" name="name" size="16" maxlength="30">
+            </span>
+          </p>
+          <p class="campo">
+            <label for="company">Company: </label>
+            <span>
+              <input type="text" name="company" size="16" maxlength="25">
+            </span>
+          </p>
+          <p class="campo">
+            <label for="experience">Experience (years): </label>
+            <span>
+                <input type="text" name="experience" size="16" maxlength="2">
+            </span>
+          </p>
+          <p class="buttonSubmit">
+            <input type="submit" value="Enviar formulario">
+          </p>
+        </form>
+      </div>
     </nav>
     <main class="grid-item main" id="cont" >
       <div class="headmain">
-        <button type="button" name="button" id ="addDev">Load data</button>
+        <h1>List of Developers:</h1>
       </div>
       <div id="main"></div>
     </main>

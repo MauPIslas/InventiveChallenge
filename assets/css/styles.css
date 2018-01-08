@@ -58,7 +58,9 @@ p{
 	background-color: #00838f ;
 }
 
-
+.addDeveloper{
+	margin: .4rem;
+}
 /*****************************/
 
 
@@ -66,4 +68,12 @@ p{
 	margin: .3rem;
 	border-radius: .3rem;
 	background-color: #b1bef7;
+}
+
+.campo{
+	padding-top: 1rem;
+}
+
+.buttonSubmit{
+	padding-top: 1rem;
 }

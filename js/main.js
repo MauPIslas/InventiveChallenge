@@ -44,16 +44,9 @@ function makeJs(){
 
 
 
-
-  var button = document.getElementById('addDev')
-  button.addEventListener('click', makePost);
-  function makePost(){
-
-    var datapost={
-      "name": "Carla",
-      "company": "Uber",
-      "experience": 4};
-    $.post("http://localhost:8000/api/developers", datapost, function(datapost,status){},'json');
+  function makePost(dataPost){
+    console.log(dataPost)
+    $.post("http://localhost:8000/api/developers", dataPost, function(datapost,status){},'json');
     render();
   };
   var divDev;
@@ -62,9 +55,6 @@ function makeJs(){
     $(divDev).empty();
     $.getJSON(url, getDevelopers);
   }
-
-
-
 
   var refId;
   var nameRef;
@@ -89,4 +79,42 @@ function makeJs(){
       }
     };
   };
+
+  var formul = document.forms.formulname;
+  formul.addEventListener('submit', validateDeveloper);
+
+  function validateDeveloper(e){
+    var form = this;
+    e.preventDefault();
+    var name = form.name.value;
+    var company = form.company.value;
+    var experience = form.experience.value;
+    experience = Number(experience);
+
+    if(typeof name != 'string' || name.length < 2 || name.length > 35) {
+      alert('algo va mal con el nombre');
+      return false;
+    }else{
+      if(typeof company != 'string' || company.length < 2 || company.length > 25) {
+        alert('algo va mal con la empresa');
+        return false;
+      }else{
+        if(isNaN(experience)){
+          alert('algo va mal con la experiencia');
+          return false;
+        }else{
+          var dataPost ={
+            "name": name,
+            "company": company,
+            "experience": experience};
+            makePost(dataPost);
+        }
+
+      }
+
+    }
+
+  }
+
+
 }
