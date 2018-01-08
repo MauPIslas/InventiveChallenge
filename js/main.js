@@ -9,7 +9,6 @@ function makeJs(){
 
 
   function getDevelopers(response){
-    // console.log(response);
     globalData = response;
     var main = document.getElementById('main')
     var name;
@@ -21,7 +20,6 @@ function makeJs(){
     var deleteDev;
     var editDev;
     for (var i= 0; i<response.length ;i++){
-      // console.log(response[i]);
       name = response[i].name;
       company = response[i].company;
       experience = response[i].experience;
@@ -37,31 +35,34 @@ function makeJs(){
       var IDD= 'd'+idDev;
       var IDE= 'e'+idDev;
       main.appendChild(element);
-      
-
 
       deleteDev = document.getElementById(IDD);
       deleteDev.addEventListener('click', deleteDeveloper);
       editDev = document.getElementById(IDE);
       editDev.addEventListener('click', editDeveloper);
-      // console.log(editDev)
-
     }
   };
 
-
-
   function makePost(dataPost){
-    console.log(dataPost)
     $.post("http://localhost:8000/api/developers", dataPost, function(datapost,status){},'json');
     render();
   };
+  function makePUT(dataPUT){
+    var urlRef = 'http://localhost:8000/api/developers'
+    $.ajax({
+              url: urlRef,
+              type: 'PUT',
+              data: dataPUT,
+              success: render
+          });
+  };
+
   var divDev;
   function render(){
     divDev= document.getElementById('main')
     $(divDev).empty();
     $.getJSON(url, getDevelopers);
-  }
+  };
 
   var refId;
   var nameRef;
@@ -83,29 +84,58 @@ function makeJs(){
                     type: 'DELETE',
                     success: render
                 });
-      }
+      };
     };
   };
-  function editDeveloper(){
-    console.log(this)
-    refId= this.getAttribute('id')
-    refId= refId.split('');
-    refId= Number(refId[1]);
-    console.log(refId);
-    var formul = document.forms.editDev;
-    formul.addEventListener('submit', validateDeveloper);
-    //Modificar la funcion validate dev to only validate forms without send anything to the server
-  }
 
   var formul = document.forms.formulname;
-  formul.addEventListener('submit', validateDeveloper);
-
-  function validateDeveloper(e){
+  formul.addEventListener('submit', addDeveloper);
+  function addDeveloper(e){
     var form = this;
     e.preventDefault();
+    alert('listo')
     var name = form.name.value;
     var company = form.company.value;
     var experience = form.experience.value;
+    var sendForm = {name : name,
+                    company: company,
+                    experience: experience}
+    
+    var val = validateDeveloper(sendForm);
+    if(val){
+      makePost(sendForm);
+    };
+  };
+  function editDeveloper(){
+    refId= this.getAttribute('id')
+    refId= refId.split('');
+    refId= Number(refId[1]);
+    var formul = document.forms.editDev;
+    formul.setAttribute('id', refId);
+  }
+  var formul = document.forms.editDev;
+  formul.addEventListener('submit', prepareDataToPUT);
+  function prepareDataToPUT(e){
+    e.preventDefault();
+    var form = this;
+    var name = form.name.value;
+    var company = form.company.value;
+    var experience = form.experience.value;
+    var id = Number(this.getAttribute('id'));
+    var sendForm = {name : name,
+                    company: company,
+                    experience: experience,
+                    id: id}
+    var val = validateDeveloper(sendForm);
+    if(val){
+      makePUT(sendForm);
+    };
+  }
+
+  function validateDeveloper(form){
+    var name = form.name;
+    var company = form.company;
+    var experience = form.experience;
     experience = Number(experience);
 
     if(typeof name != 'string' || name.length < 2 || name.length > 35) {
@@ -120,18 +150,14 @@ function makeJs(){
           alert('algo va mal con la experiencia');
           return false;
         }else{
-          var dataPost ={
-            "name": name,
-            "company": company,
-            "experience": experience};
-            makePost(dataPost);
-        }
+          return true;
+        };
 
-      }
+      };
 
-    }
+    };
 
-  }
+  };
 
 
-}
+};
