@@ -13,9 +13,9 @@ function genereteData(){
 
       function postData(){
 
-        var toHide = this.parentElement;
-        $(toHide).fadeToggle();
-          setTimeout(function(){ toHide.remove(); }, 1000);
+        // var toHide = this.parentElement;
+        // $(toHide).fadeToggle();
+        //   setTimeout(function(){ toHide.remove(); }, 1000);
 
         var data =[{
                   "name": "Angelo",
