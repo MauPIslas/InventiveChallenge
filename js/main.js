@@ -18,7 +18,8 @@ function makeJs(){
     var element;
     var idDev;
     var divElement;
-    var deleteDev
+    var deleteDev;
+    var editDev;
     for (var i= 0; i<response.length ;i++){
       // console.log(response[i]);
       name = response[i].name;
@@ -31,14 +32,20 @@ function makeJs(){
       element.className += "card";
       element.setAttribute('id', idDev);
       divElement.className += "flex";
-      divElement.innerHTML = '<p class="name"><b>'+name+'</b></p> <p class="company">Company: '+company+'</p> <p class="experience"> Experience: '+experience+' years</p><p class=""></p> <button type="button" name="button" class="delete" id="d'+idDev+'" >DELETE</button>';
+      divElement.innerHTML = '<p class="name"><b>'+name+'</b></p> <p class="company">Company: '+company+'</p> <p class="experience"> Experience: '+experience+' years</p><p class=""></p> <div class="buttonSection"><a class="blue btn pri" id="e'+idDev+'">Edit</a><a class="red btn pri" id="d'+idDev+'">Delete</a></div>';
       element.appendChild(divElement);
-      var ID= 'd'+idDev;
-
-
+      var IDD= 'd'+idDev;
+      var IDE= 'e'+idDev;
       main.appendChild(element);
-      deleteDev = document.getElementById(ID);
+      
+
+
+      deleteDev = document.getElementById(IDD);
       deleteDev.addEventListener('click', deleteDeveloper);
+      editDev = document.getElementById(IDE);
+      editDev.addEventListener('click', editDeveloper);
+      // console.log(editDev)
+
     }
   };
 
@@ -79,6 +86,16 @@ function makeJs(){
       }
     };
   };
+  function editDeveloper(){
+    console.log(this)
+    refId= this.getAttribute('id')
+    refId= refId.split('');
+    refId= Number(refId[1]);
+    console.log(refId);
+    var formul = document.forms.editDev;
+    formul.addEventListener('submit', validateDeveloper);
+    //Modificar la funcion validate dev to only validate forms without send anything to the server
+  }
 
   var formul = document.forms.formulname;
   formul.addEventListener('submit', validateDeveloper);
