@@ -11,7 +11,10 @@
   <div class="grid">
     <header class="grid-item heder">HEDER</header>
     <nav class="grid-item nav">
-      <div class="addDeveloper">
+      <div class="buttonAdd">
+        <a class="btn pri darkBlue" id="BtnAddDeveloper">Add +</a>
+      </div>
+      <div class="addDeveloper"  id="addDeveloper">
         <h4>Add a new Developer:</h4>
         <form action=""name="formulname" method="post">
           <p class="campo">
@@ -33,15 +36,15 @@
             </span>
           </p>
           <p class="buttonSubmit">
-            
-            <button type="submit">Enviar formulario</button>
+            <button class='green btn pri' >Save</button>
+            <!-- <a class='green btn pri' type="submit">Save</a> -->
           </p>
           <p class="campo">
               <button type="reset">Reset</button>
           </p>
         </form>
       </div>
-      <div class="editDeveloper">
+      <div id="editDeveloper">
           <h4>Edit a Developer:</h4>
           <form action=""name="editDev" method="post">
             <p class="campo">
@@ -79,10 +82,6 @@
       <div id="main"></div>
     </main>
     <footer class="grid-item footer">footer
-
-      <a class='red btn pri'>Delete</a>
-      <a class='blue btn pri'>Edit</a>
-      <a class='green btn pri'>Save</a>
     </footer>
   </div>
   <script src="./js/main.js"></script>

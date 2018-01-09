@@ -87,13 +87,17 @@ function makeJs(){
       };
     };
   };
-
+  var buttonAdd = document.getElementById('BtnAddDeveloper');
+  buttonAdd.addEventListener('click', expanDivAdd);
+  function expanDivAdd(){
+    var divAdd= document.getElementById('addDeveloper');
+    $(divAdd).toggle(1000);
+  };
   var formul = document.forms.formulname;
   formul.addEventListener('submit', addDeveloper);
   function addDeveloper(e){
     var form = this;
     e.preventDefault();
-    alert('listo')
     var name = form.name.value;
     var company = form.company.value;
     var experience = form.experience.value;
@@ -103,6 +107,7 @@ function makeJs(){
     
     var val = validateDeveloper(sendForm);
     if(val){
+      expanDivAdd();
       makePost(sendForm);
     };
   };
@@ -110,13 +115,18 @@ function makeJs(){
     refId= this.getAttribute('id')
     refId= refId.split('');
     refId= Number(refId[1]);
+    var divEdit = document.getElementById('editDeveloper');
+    $(divEdit).show(1000,"linear");
     var formul = document.forms.editDev;
     formul.setAttribute('id', refId);
+    console.log(formul)
   }
   var formul = document.forms.editDev;
   formul.addEventListener('submit', prepareDataToPUT);
   function prepareDataToPUT(e){
     e.preventDefault();
+    var divEdit = document.getElementById('editDeveloper');
+    $(divEdit).hide(1000,"linear");
     var form = this;
     var name = form.name.value;
     var company = form.company.value;
