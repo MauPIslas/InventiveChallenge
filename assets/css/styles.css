@@ -23,9 +23,8 @@ body {
 .grid-item{
 	padding: 1.5rem;
 	border-radius: .3rem;
-	background-color: #006064 ;
+	background-color: rgba(0, 96, 100, .2);
 }
-
 
 /*****************************/
 
@@ -35,20 +34,58 @@ body {
   grid-template-columns: [start] minmax(12rem,20%)
                          [sideend main] minmax(30rem, auto)
                          [end];
-  grid-template-rows: [initrow] minmax(5rem,20%)
+  grid-template-rows: [initrow] minmax(5rem,10rem)
                       [main] minmax(30rem,auto)
-                      [footer] minmax(5rem,20%)
-                      [endrow];
+                      [footer];
 }
 .heder{
   grid-column: 1/3;
+  background: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr ,.2rem;
+}
+#logo{
+	border-radius: 50%;
+	height: 100px;
+	grid-column: 4/5;
+}
+.lineHeder{
+	background-color: rgb(0, 96, 100);
+	grid-column: 1/-1;
+	border-radius: 50%;
 }
 .main{
 	grid-column: 2/3;
 }
-.footer{
-  grid-column: 1/3;
+.headmain{
+	display: grid;
+	grid-column-gap: .5rem;
+	padding-bottom: 1rem;
 }
+
+.title{
+	display: inline;
+}
+.orderfrom{
+	grid-column: 4/5;
+	grid-row: 2/3;
+}
+h1{
+	margin: .4rem;
+}
+h5{
+	margin: 0;
+}
+#A-Z{
+	grid-column: 4/5;
+	grid-row: 3/4; 
+}
+#Z-A{
+	grid-column: 5/6;
+	grid-row: 3/4; 
+}
+
 
 .flex{
 	display: flex;
@@ -74,6 +111,7 @@ p{
 }
 #editDeveloper{
 	display: none;
+	margin: .4rem;
 }
 
 .buttonSection{
@@ -140,7 +178,7 @@ p{
 .card{
 	margin: .3rem;
 	border-radius: .3rem;
-	background-color: #b1bef7;
+	background-color: rgba(0, 96, 100, .7);
 	height: 6rem;
 }
 
@@ -161,7 +199,6 @@ input {
 	padding: .5rem;
 	font-size: .9rem;
 	color: #fff;
-	/* text-shadow: 1px 1px 1px rgba(0,0,0,0.3); */
 	border: 1px solid rgba(0,0,0,0.3);
 	border-radius: 4px;
 	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);

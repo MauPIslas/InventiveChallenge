@@ -109,6 +109,7 @@ function makeJs(){
     if(val){
       expanDivAdd();
       makePost(sendForm);
+      form.reset();
     };
   };
   function editDeveloper(){
@@ -139,6 +140,7 @@ function makeJs(){
     var val = validateDeveloper(sendForm);
     if(val){
       makePUT(sendForm);
+      form.reset();
     };
   }
 
