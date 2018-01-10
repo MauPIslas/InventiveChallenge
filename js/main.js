@@ -7,8 +7,8 @@ function makeJs(){
   var globalData;
   $.getJSON(url, getDevelopers)
 
-
   function getDevelopers(response){
+    console.log(response)
     globalData = response;
     var main = document.getElementById('main')
     var name;
@@ -164,10 +164,31 @@ function makeJs(){
         };
 
       };
-
     };
-
   };
-
-
+  var AZButton= document.getElementById('A-Z');
+  AZButton.addEventListener('click', orderAZ);
+  function orderAZ(){
+    globalData.sort(sortNames);
+    divDev= document.getElementById('main');
+    $(divDev).empty();
+    getDevelopers(globalData);
+  };
+  var ZAButton= document.getElementById('Z-A');
+  ZAButton.addEventListener('click', orderZA);
+  function orderZA(){
+    globalData.sort(sortNames).reverse();
+    divDev= document.getElementById('main');
+    $(divDev).empty();
+    getDevelopers(globalData);
+  };
+  function sortNames(a,b){
+    var nameA=a.name.toLowerCase()
+    var nameB=b.name.toLowerCase()
+    if (nameA < nameB)
+      return -1 
+    if (nameA > nameB)
+      return 1
+    return 0;
+  };
 };
